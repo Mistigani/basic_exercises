@@ -12,7 +12,13 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-# ???
+
+from collections import Counter
+
+temp = [i['first_name'] for i in students]
+for k, v in Counter(temp).items():
+    print(f'{k}: {v}')
+
 
 
 # Задание 2
@@ -26,7 +32,17 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Оля'},
 ]
-# ???
+
+from collections import Counter
+
+temp = [i['first_name'] for i in students]
+fin_name = ''
+total = 0
+for k, v in Counter(temp).items():
+    if v > total:
+        total = v
+        fin_name = k
+print(f'Самое частое имя среди учеников: {fin_name}')
 
 
 # Задание 3
@@ -51,7 +67,17 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-# ???
+
+#from collections import Counter
+for students in range(len(school_students)):
+    temp = [i['first_name'] for i in school_students[students]]
+    fin_name = ''
+    total = 0
+    for k, v in Counter(temp).items():
+        if v > total:
+            total = v
+            fin_name = k
+    print(f'Самое частое имя в классе {students + 1}: {fin_name}')
 
 
 # Задание 4
@@ -72,8 +98,17 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-# ???
 
+for classes in school:
+    temp = [i['first_name'] for i in classes['students']]
+    m = 0
+    f = 0
+    for i in temp:
+        if is_male[i]:
+            m += 1
+        else:
+            f += 1
+    print(f'Класс {classes["class"]}: девочки {f}, мальчики {m}')
 
 # Задание 5
 # По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
@@ -91,5 +126,24 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-# ???
 
+fin_class_m = ''
+total_m = 0
+fin_class_f = ''
+total_f = 0
+for classes in school:
+
+    temp = [i['first_name'] for i in classes['students']]
+    m = 0
+    f = 0
+    for i in temp:
+        if is_male[i]:
+            m += 1
+        else:
+            f += 1
+    if m > total_m:
+        fin_class_m = classes["class"]
+    if f > total_f:
+        fin_class_f = classes["class"]
+
+print(f'Больше всего мальчиков в классе {fin_class_m}\nБольше всего девочек в классе {fin_class_f}')
