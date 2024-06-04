@@ -30,8 +30,8 @@ print(len(sentence.split()))
 # Вывести первую букву каждого слова на отдельной строке
 sentence = 'Мы приехали в гости'
 
-for i in sentence.split():
-    print(i[0])
+for word in sentence.split():
+    print(word[0])
 
 
 # Вывести усреднённую длину слова в предложении
