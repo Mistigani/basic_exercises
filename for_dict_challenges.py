@@ -1,5 +1,5 @@
 # Задание 1
-# Дан список учеников, нужно посчитать количество повторений каждого имени ученика
+# Дан список учеников,  нужно посчитать количество повторений каждого имени ученика
 # Пример вывода:
 # Вася: 1
 # Маша: 2
@@ -16,8 +16,8 @@ students = [
 from collections import Counter
 
 temp = [i['first_name'] for i in students]
-for k, v in Counter(temp).items():
-    print(f'{k}: {v}')
+for name, count in Counter(temp).items():
+    print(f'{name}: {count}')
 
 
 
@@ -36,13 +36,13 @@ students = [
 from collections import Counter
 
 temp = [i['first_name'] for i in students]
-fin_name = ''
+most_frequent_name = ''
 total = 0
-for k, v in Counter(temp).items():
-    if v > total:
-        total = v
-        fin_name = k
-print(f'Самое частое имя среди учеников: {fin_name}')
+for name, count in Counter(temp).items():
+    if count > total:
+        total = count
+        most_frequent_name = name
+print(f'Самое частое имя среди учеников: {most_frequent_name}')
 
 
 # Задание 3
@@ -73,10 +73,10 @@ for students in range(len(school_students)):
     temp = [i['first_name'] for i in school_students[students]]
     fin_name = ''
     total = 0
-    for k, v in Counter(temp).items():
-        if v > total:
-            total = v
-            fin_name = k
+    for name, count in Counter(temp).items():
+        if count > total:
+            total = count
+            fin_name = name
     print(f'Самое частое имя в классе {students + 1}: {fin_name}')
 
 
@@ -101,14 +101,14 @@ is_male = {
 
 for classes in school:
     temp = [i['first_name'] for i in classes['students']]
-    m = 0
-    f = 0
+    male = 0
+    female = 0
     for i in temp:
         if is_male[i]:
-            m += 1
+            male += 1
         else:
-            f += 1
-    print(f'Класс {classes["class"]}: девочки {f}, мальчики {m}')
+            female += 1
+    print(f'Класс {classes["class"]}: девочки {female}, мальчики {male}')
 
 # Задание 5
 # По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
@@ -134,16 +134,16 @@ total_f = 0
 for classes in school:
 
     temp = [i['first_name'] for i in classes['students']]
-    m = 0
-    f = 0
+    male = 0
+    female = 0
     for i in temp:
         if is_male[i]:
-            m += 1
+            male += 1
         else:
-            f += 1
-    if m > total_m:
+            female += 1
+    if male > total_m:
         fin_class_m = classes["class"]
-    if f > total_f:
+    if female > total_f:
         fin_class_f = classes["class"]
 
 print(f'Больше всего мальчиков в классе {fin_class_m}\nБольше всего девочек в классе {fin_class_f}')

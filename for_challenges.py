@@ -1,5 +1,5 @@
 # Задание 1
-# Необходимо вывести имена всех учеников из списка с новой строки
+# Необходимо  вывести имена всех учеников из списка с новой строки
 
 names = ['Оля', 'Петя', 'Вася', 'Маша']
 
@@ -52,8 +52,8 @@ groups = [
 ]
 
 print(f'Всего {len(groups)} группы.')
-for i in range(len(groups)):
-    print(f'Группа {i + 1}: {len(groups[i])} ученика.')
+for group_number, group in enumerate(groups, start=1):
+    print(f'Группа {group_number}: {len(group)} ученика.')
 
 
 # Задание 5
@@ -67,5 +67,5 @@ groups = [
     ['Оля', 'Петя', 'Гриша'],
     ['Вася', 'Маша', 'Саша', 'Женя'],
 ]
-for i in range(len(groups)):
-    print(f"Группа {i + 1}: {' '.join(groups[i])}")
+for group_number, group in enumerate(groups, start=1):
+    print(f"Группа {group_number}: {', '.join(group)}")
